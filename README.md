@@ -98,87 +98,48 @@ setup_db.py → Initializes the SQLite database and tables
 
 LA_Crime_Data_from_2020_to_Present.csv → Source dataset 
 
-How to run: 
-
--------------- 
-
+How to Run: 
+----------- 
 1. Clone or download this repository. 
-
 2. Ensure you have Python 3.8+ and pip installed. 
-
 3. Install dependencies: 
-
    ``` 
-
-  pip install -r requirements.txt 
-   ```  
-
-4. Initialize the database:python setup_db.py 
-
-  ``` 
+   pip install -r requirements.txt 
+   ``` 
+4. Initialize the database: 
+   ``` 
    python setup_db.py 
    ``` 
-  
+5. Launch the web application: 
+   ``` 
+   python run.py 
+   ``` 
+6. Open your browser and go to `http://127.0.0.1:5000`  
 
-5. Launch the web application:python run.py 
+User Credentials:
+-----------------
+You can create users manually via the database or implement a registration system.
 
-     ``` 
-     python run.py 
-     ``` 
-  
+Default roles:
+- User: View search and heatmap
+- Admin (if enabled): Can access restricted panels
 
-6. Open your browser and go to http://127.0.0.1:5000  
+Future Enhancements:
+--------------------
+- Real-time data updates via LAPD API
+- Admin dashboard for managing users and data
+- Role-based access control with more granular permissions
+- More robust model retraining pipelines
+- Enhanced visualizations with dynamic filters
 
- 
+License:
+--------
+Open-source for academic purposes only. Do not deploy in production with real data without additional security, legal, and ethical safeguards.
 
-User Credentials: 
-
----------------------- 
-
-You can create users manually via the database or implement a registration system. 
-
- 
-
-Default roles: 
-
------------------ 
-
-User: View search and heatmap 
-
-Admin (if enabled): Can access restricted panels 
-
- 
-
-Future Enhancement: 
-
---------------------------- 
-
- 
-
-Real-time data updates via LAPD API 
-
-Admin dashboard for managing users and data 
-
-Role-based access control with more granular permissions 
-
-More robust model retraining pipelines 
-
-Enhanced visualizations with dynamic filters 
-
-License: 
-
----------- 
-
-Open source for academic purposes only. Do not deploy in production with real data without additional security, legal, and ethical safeguards. 
-
-Reference:  
-
--------------- 
-
-LAPD Crime Data: https://data.lacity.org/ 
-
-SARIMA documentation: https://www.statsmodels.org/ 
-
-LSTM Forecasting: https://www.tensorflow.org/ 
+References:
+-----------
+- LAPD Crime Data: https://data.lacity.org/
+- SARIMA documentation: https://www.statsmodels.org/
+- LSTM Forecasting: https://www.tensorflow.org/
 
  
