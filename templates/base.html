@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Crime Analysis{% endblock %}</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+    {% block navbar %}
+    <div class = "navbar-fixed">
+        <nav style="background-color: #f4f4f4; padding: 10px;">
+            {% if session.get('username') %}
+                Logged in as: <strong>{{ session['username'] }}</strong> ({{ session['role'] }}) |
+                <a href="{{ url_for('search.search') }}">Search</a>
+                | <a href="{{ url_for('heat.heatmap') }}">Heatmap</a>
+                {% if session['role'] == 'admin' %}
+                    | <a href="{{ url_for('admin_panel') }}">Admin Panel</a>
+                {% endif %}
+                | <a href="{{ url_for('auth.logout') }}">Logout</a>
+            {% else %}
+                <a href="{{ url_for('auth.login') }}">Login</a>
+            {% endif %}
+        </nav>
+    </div>
+    {% endblock %}
+    
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+
+    <footer>
+        &copy; 2025 Crime Analysis System
+    </footer>
+    </body>
+</html>

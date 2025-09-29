@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}Search Crimes{% endblock %}
+
+{% block content %}
+<h2>Search Page</h2>
+<form method="POST">
+    Max Age: <input type="text" name="max_vict_age" value="{{ filters.max_vict_age or '' }}"><br><br>
+    Min Age: <input type="text" name="min_vict_age" value="{{ filters.min_vict_age or '' }}"><br><br>
+    Victim Sex: <input type="text" name="vict_sex" value="{{ filters.vict_sex or '' }}"><br><br>
+    Victim Race: <input type="text" name="vict_descent" value="{{ filters.vict_descent or '' }}"><br><br>
+    Min Date: <input type="text" name="min_date" value="{{ filters.min_date or '' }}"><br><br>
+    Max Date: <input type="text" name="max_date" value="{{ filters.max_date or '' }}"><br><br>
+    Area Name: <input type="text" name="area_name" value="{{ filters.area_name or '' }}"><br><br>
+    Crime Type: <input type="text" name="crm_cd_desc" value="{{ filters.crm_cd_desc or '' }}"><br><br>
+    Weapon Type: <input type="text" name="weapon_type" value="{{ filters.weapon_type or '' }}"><br><br>
+    Status: <input type="text" name="status" value="{{ filters.status or '' }}"><br><br>
+    <input type="submit" value="Search">
+</form>
+
+<h3 id="results">Results:</h3>
+<div class="scroll-box">
+    {% for crime in results.items %}
+        <div>
+            <strong>Date:</strong> {{ crime.date_occurred }},
+            <strong>Victim Age:</strong> {{ crime.vict_age }},
+            <strong>Victim Sex:</strong> {{ crime.vict_sex }},
+            <strong>Victim Race:</strong> {{ crime.vict_descent }},
+            <strong>Area:</strong> {{ crime.area_name }},
+            <strong>Crime Type:</strong> {{ crime.crm_cd_desc }},
+            <strong>Weapon:</strong> {{ crime.weapon_type }},
+            <strong>Status:</strong> {{ crime.status }}
+        </div>
+        <hr>
+    {% endfor %}
+</div>
+
+<div>
+    {% if results.has_prev %}
+        <a href="{{ url_for('search.search', page=results.prev_num, 
+                            max_vict_age=request.args.get('max_vict_age'), 
+                            min_vict_age=request.args.get('min_vict_age'), 
+                            vict_sex=request.args.get('vict_sex'),
+                            vict_descent=request.args.get('vict_descent'),
+                            min_date=request.args.get('min_date'),
+                            max_date=request.args.get('max_date'),
+                            area_name=request.args.get('area_name'),
+                            crm_cd_desc=request.args.get('crm_cd_desc'),
+                            weapon_type=request.args.get('weapon_type'),
+                            status=request.args.get('status')) }}#results">Previous</a>
+    {% endif %}
+    
+    Page {{ results.page }} of {{ results.pages }}
+    
+    {% if results.has_next %}
+        <a href="{{ url_for('search.search', page=results.next_num, 
+                            max_vict_age=request.args.get('max_vict_age'), 
+                            min_vict_age=request.args.get('min_vict_age'), 
+                            vict_sex=request.args.get('vict_sex'),
+                            vict_descent=request.args.get('vict_descent'),
+                            min_date=request.args.get('min_date'),
+                            max_date=request.args.get('max_date'),
+                            area_name=request.args.get('area_name'),
+                            crm_cd_desc=request.args.get('crm_cd_desc'),
+                            weapon_type=request.args.get('weapon_type'),
+                            status=request.args.get('status')) }}#results">Next</a>
+    {% endif %}
+</div>
+{% endblock %}
