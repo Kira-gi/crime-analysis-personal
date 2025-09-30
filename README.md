@@ -1,7 +1,7 @@
-Crime Analysis and Prediction System
+Crime analysis personal
 ====================================
 
-Author: Kirubel Gebreyohanis 
+Author: Kirubel Gebreyohanis                                                                                                                                                                                        
 Affiliation: Southeast Missouri State University  
 Course: CS499 - Capstone 
 
